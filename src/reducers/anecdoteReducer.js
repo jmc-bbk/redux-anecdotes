@@ -1,3 +1,4 @@
+// Utils
 const anecdotesAtStart = [
   'If it hurts, do it more often',
   'Adding manpower to a late software project makes it later!',
@@ -19,9 +20,8 @@ const asObject = (anecdote) => {
 
 const initialState = anecdotesAtStart.map(asObject)
 
-const reducer = (state = initialState, action) => {
-  console.log('state now: ', state)
-  console.log('action', action)
+// Reducer
+const anecdoteReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'VOTE':
       const id = action.payload.id
@@ -39,6 +39,7 @@ const reducer = (state = initialState, action) => {
   }
 }
 
+// Actions
 export const vote = (id) => {
   return {
     type: 'VOTE',
@@ -53,4 +54,4 @@ export const newAnecdote = (content) => {
   }
 }
 
-export default reducer
+export default anecdoteReducer
