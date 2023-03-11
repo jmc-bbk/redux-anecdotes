@@ -1,16 +1,16 @@
 import { useDispatch } from 'react-redux'
 import { newAnecdote } from '../reducers/anecdoteReducer'
+import { newNotification } from '../reducers/notificationReducer'
 
 const AnecdoteForm = () => {
   const dispatch = useDispatch()
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(event)
     const content = event.target.anecdote.value
-    console.log(content)
     event.target.anecdote.value = ''
     dispatch(newAnecdote(content))
+    dispatch(newNotification(`You added new anecdote ${content}`), 5000)
   }
 
   return (
